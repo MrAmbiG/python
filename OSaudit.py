@@ -36,19 +36,18 @@ with open("report.html","a") as myfile:
     #colors from http://www.color-hex.com/
     file('<th style="border:1px solid black">Hostname</th>')
     file('<th style="border:1px solid black">IP</th>')
-    file('<th style="border:1px solid black">System</th>')
-    file('<th style="border:1px solid black">Release</th>')
-    file('<th style="border:1px solid black">Version</th>')
-    
+    file('<th style="border:1px solid black">Platform</th>')
+    file('<th style="border:1px solid black">Cpu Cores</th>')
 
     #data for the headers above
-    import socket, platform
+    import socket, platform, multiprocessing
     
     hostname = socket.gethostname()
     IP = socket.gethostbyname(hostname)
     System = platform.system()
     Release = platform.release()
     Version = platform.version()
+    Ccores = multiprocessing.cpu_count()
     
     #fill the data under the headers created before in new rows and new cells
     #start of a new row
@@ -64,15 +63,11 @@ with open("report.html","a") as myfile:
     file("</td>")
     
     file("<td style='border:1px solid black'>")
-    file("<p>%s</p>"%System)
+    file("<p>%s %s (Build %s)</p>"%(System,Release,Version))
     file("</td>")
     
     file("<td style='border:1px solid black'>")
-    file("<p>%s</p>"%Release)
-    file("</td>")
-    
-    file("<td style='border:1px solid black'>")
-    file("<p>%s</p>"%Version)
+    file("<p>%s</p>"%Ccores)
     file("</td>")
 
     #end of row
