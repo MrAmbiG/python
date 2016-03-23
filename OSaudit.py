@@ -5,7 +5,7 @@ with open("report.html","a") as myfile:
     file('<!DOCTYPE html>')
     file('<html>')
     file('<head>')
-    file('<title>CIMC Audit</title>')
+    file('<title>Windows Audit</title>')
     file('<style>')
     file('p{')
     file('font-size: 74%;')
@@ -26,7 +26,7 @@ with open("report.html","a") as myfile:
     file('</head>')
     file('<body bgcolor="#f8f8f8">')
     
-    file('<table style="border:2px solid black" width=100% bgcolor="#005a9c" cellspacing="0" cellpadding="0"><tr><td><font face="Calibri, Times, serif" size="2" color="#ffffff"><a id=section_1></a><h2><i>Section 1 : CIMC Hardware </i></h2></td></tr></table>')
+    file('<table style="border:2px solid black" width=100% bgcolor="#005a9c" cellspacing="0" cellpadding="0"><tr><td><font face="Calibri, Times, serif" size="2" color="#ffffff"><a id=section_1></a><h2><i><center>Windows Audit</center></i></h2></td></tr></table>')
     #main indenting/enclosing table
     file('<table style="border:1px solid black" width="100%" bgcolor="white" cellspacing="0" cellpadding="0"<tr><td>')
     #a #ffffff separator between the main&data table 
@@ -36,12 +36,19 @@ with open("report.html","a") as myfile:
     #colors from http://www.color-hex.com/
     file('<th style="border:1px solid black">Hostname</th>')
     file('<th style="border:1px solid black">IP</th>')
+    file('<th style="border:1px solid black">System</th>')
+    file('<th style="border:1px solid black">Release</th>')
+    file('<th style="border:1px solid black">Version</th>')
+    
 
     #data for the headers above
-    import socket
+    import socket, platform
     
     hostname = socket.gethostname()
     IP = socket.gethostbyname(hostname)
+    System = platform.system()
+    Release = platform.release()
+    Version = platform.version()
     
     #fill the data under the headers created before in new rows and new cells
     #start of a new row
@@ -54,6 +61,18 @@ with open("report.html","a") as myfile:
     
     file("<td style='border:1px solid black'>")
     file("<p>%s</p>"%IP)
+    file("</td>")
+    
+    file("<td style='border:1px solid black'>")
+    file("<p>%s</p>"%System)
+    file("</td>")
+    
+    file("<td style='border:1px solid black'>")
+    file("<p>%s</p>"%Release)
+    file("</td>")
+    
+    file("<td style='border:1px solid black'>")
+    file("<p>%s</p>"%Version)
     file("</td>")
 
     #end of row
