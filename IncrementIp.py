@@ -4,7 +4,7 @@
 .DESCRIPTION
     This can be used to get a range of ip address. 
 .NOTES
-    File Name      : IncrementIp1.py
+    File Name      : IncrementIp.py
     Author         : gajendra d ambi
     Prerequisite   : python 3.5 (tested on windows)
     Copyright      - none
