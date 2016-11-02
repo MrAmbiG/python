@@ -25,4 +25,4 @@ ssh.connect(target, port=22, username=username, password=password) #connect to t
 stdin, stdout, stderr = ssh.exec_command(command) #execute the command
 output = stdout.readlines() #get the output
 outstore = '\n'.join(output) #format the output to print each line in a new line
-print output #print output
+print outstore #print outstore
